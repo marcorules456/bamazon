@@ -1,0 +1,26 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "database for food",
+  "main": "index.js",
+  "scripts": {
+    "test": "d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcorules456/bamazon.git"
+  },
+  "keywords": [
+    "data"
+  ],
+  "author": "marco khodr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcorules456/bamazon/issues"
+  },
+  "homepage": "https://github.com/marcorules456/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0",
+    "mysql": "^2.15.0"
+  }
+}
