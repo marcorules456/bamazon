@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/marcorules456/bamazon#readme",
   "dependencies": {
+    "columnify": "^1.5.4",
     "inquirer": "^3.3.0",
     "mysql": "^2.15.0"
   }

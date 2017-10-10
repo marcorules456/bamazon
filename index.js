@@ -15,9 +15,10 @@ var connection = mysql.createConnection ({
 function menu(){
 	connection.query("SELECT * FROM products",function(err,res){
 
-		for(var i =0; i<res.length; i++){
+		for(var i =0; i<res.length; i++)
+		{
 		console.log(res[i].id + " | " + res[i].name + " | " + res[i].stock + " | " + res[i].department + " | ");
-		console.log("------------------------------------------");
+		console.log(" ------------------------------------------ ");
 		}
 	});
 }
@@ -50,15 +51,15 @@ function itemSearch(){
 
     		var inventory = res[0].stock;
     		var product = res[0].name;
-				if (res[0].stock >1){;
+				if (res[0].stock >1){
  				console.log("You are about to order " + itemOrder + " producs of " + product);
  					connection.query("UPDATE products SET stock= (stock -" +itemOrder+")  WHERE id="+itemOrder,function(err,res){
  					console.log("success");
  						connection.query("SELECT * FROM products WHERE id ="+itemOrder,function(err,res){
  						console.log(res);
  						});
- 					}
- 				});
+ 					});
+ 				}
 
             	 else{
 				console.log(" we are out of stock! Come by later!");
