@@ -9,19 +9,21 @@ var connection = mysql.createConnection ({
 });
 
 
-
+connection.connect();
 
 
 function menu(){
 	connection.query("SELECT * FROM products",function(err,res){
-
+console.log("---------------")
 		for(var i =0; i<res.length; i++)
 		{
-		console.log(res[i].id + " | " + res[i].name + " | " + res[i].stock + " | " + res[i].department + " | ");
+		console.log(res[i].id + " | " + res[i].name + " | " + res[i].stock + " | " + res[i].department + " | " );
 		console.log(" ------------------------------------------ ");
 		}
 	});
+	itemSearch();
 }
+
 
 
 
@@ -51,18 +53,22 @@ function itemSearch(){
 
     		var inventory = res[0].stock;
     		var product = res[0].name;
-				if (res[0].stock >1){
- 				console.log("You are about to order " + itemOrder + " producs of " + product);
- 					connection.query("UPDATE products SET stock= (stock -" +itemOrder+")  WHERE id="+itemOrder,function(err,res){
- 					console.log("success");
- 						connection.query("SELECT * FROM products WHERE id ="+itemOrder,function(err,res){
- 						console.log(res);
+				if (res[0].stock > quantityOrder){
+ 					console.log("You are about to order " + itemOrder + " producs of " + product + "\n");
+ 						connection.query("UPDATE products SET stock= (stock -" +quantityOrder+")  WHERE id="+itemOrder,function(err,res){
+ 						console.log("success \n");
+ 							connection.query("SELECT * FROM products WHERE id ="+itemOrder,function(err,res){
+ 					
+ 							console.log(res[0].id + " | Item: " +res[0].name +  " | Quantity: " + res[0].stock);
+ 							console.log('_________________________________________________________________________');
+ 						
+ 						
  						});
  					});
  				}
 
             	 else{
-				console.log(" we are out of stock! Come by later!");
+					console.log(" we are out of stock! Come by later!");
 	 						} 
 			});
 
@@ -77,14 +83,4 @@ function itemSearch(){
 
 
 
-
-
-
-function bamazon(){
-	menu();
-	itemSearch();
-		
-
-}
-
-bamazon();
+menu();
